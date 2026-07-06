@@ -1,0 +1,19 @@
+{
+  "project": "desktop-fiscal-invoice-email-batch",
+  "last_updated": "2026-07-03",
+  "metrics": {
+    "test_coverage": {
+      "instruction_coverage_pct": 83.75,
+      "branch_coverage_pct": 79.86,
+      "line_coverage_pct": 81.96,
+      "method_coverage_pct": 84.84,
+      "class_coverage_pct": 86.21
+    },
+    "quality_indicators": {
+      "sonar_open_issues": 0,
+      "sonar_bugs": 0,
+      "sonar_vulnerabilities": 0,
+      "sonar_code_smells": 0
+    }
+  }
+}

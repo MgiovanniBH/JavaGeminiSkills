@@ -68,8 +68,19 @@ After generating the report, the agent MUST:
 7.  **Review & Approval**: Present the Task List artifact on screen and request the user's review. Stop and wait for the user to approve the plan or suggest changes before proceeding with any implementation.
 8.  **Validate before Commit**: Before each commit, ALWAYS run `./gradlew clean compileJava test` to ensure stability. No commit should be made if the build or tests fail.
 
+## SonarQube & Code Quality Checkpoints (Workspace-specific)
+
+Ensure the code review checks for the following SonarQube-aligned code quality rules:
+1. **Cognitive Complexity (java:S3776)**: Keep method complexity below 15 by using guard clauses and extracting helper methods.
+2. **System Clock Decoupling (java:S8692, java:S8688)**: Do not use raw `LocalDateTime.now()` in tests. Use fixed dates (e.g., `LocalDateTime.of(...)`) or a mockable `Clock` parameter. Always specify the timezone explicitly (`LocalDateTime.now(ZoneId.systemDefault())`) in production code.
+3. **Month Enums in Datetime Constructors (java:S8694)**: Use `java.time.Month` enums instead of integer month literals in datetime creation methods.
+4. **AssertJ Map Assertions (java:S5838)**: Use `.containsEntry("key", value)` instead of `.get("key").isEqualTo(value)` for map assertions.
+5. **Generic Exceptions (java:S112)**: Avoid throwing raw `RuntimeException` or `Throwable`. Throw specific exceptions or use `JobFailedException`.
+6. **Code Coverage Target**: Ensure total project coverage remains at or above **85%** and processor classes remain above **90%** (verified via JaCoCo).
+
 ## Token Optimization
 - Do not quote large blocks of code unless necessary for context.
 - Use line number references `[file.java:12-15]`.
 - Use bullet points for high density of information.
+
 

@@ -550,6 +550,21 @@ When reviewing code, check:
 - [ ] Is the code at consistent abstraction level?
 - [ ] Can any code be simplified?
 - [ ] Is there dead/unused code?
+- [ ] Is Cognitive Complexity under control (< 15)?
+- [ ] Are generic exceptions avoided in favor of custom or library exceptions?
+
+---
+
+## Cognitive Complexity & Generic Exceptions
+
+### 1. Reducing Cognitive Complexity (java:S3776)
+Cognitive Complexity measures how hard a method's control flow is to understand. Keep methods under a score of 15.
+- **Guard Clauses**: Use early returns to flatten nested `if` statements.
+- **Method Extraction**: Delegate sub-tasks, validations, queries, and network calls to well-named private methods.
+
+### 2. Avoid Generic Exceptions (java:S112)
+Do not throw generic exceptions like `RuntimeException`, `Throwable`, `Error`, or `Exception`. 
+- **Use Specific Exceptions**: Throw specific library exceptions (e.g. `IllegalArgumentException`, `IllegalStateException`) or define a custom workspace/domain exception class extending `RuntimeException`.
 
 ---
 

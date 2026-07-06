@@ -568,6 +568,8 @@ assertThat(actual)
 8. **Parameterize** similar tests
 9. **Soft assertions** for multiple checks
 10. **Coverage** on business logic, not boilerplate
+11. **Map Assertions**: Assert maps using `.containsEntry("key", value)` instead of `.get("key").isEqualTo(value)` to avoid raw object checks (java:S5838).
+12. **Time and Clock Mocking**: Avoid using the system clock (`LocalDateTime.now()`) inside tests; instead specify timezones explicitly (`ZoneId.systemDefault()`) or inject a mockable `Clock` parameter (java:S8692, java:S8688).
 
 ## References
 
